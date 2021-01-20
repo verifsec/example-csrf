@@ -36,7 +36,7 @@
         }
         if (isAjax) {
           var xhr = new XMLHttpRequest();
-          xhr.open(type, "http://localhost:3010" + target);
+          xhr.open(type, "https://example.com:3010" + target);
           xhr.setRequestHeader(
             "Content-Type",
             "application/x-www-form-urlencoded"
@@ -61,7 +61,7 @@
           const formElement = document.forms[0].cloneNode(true);
           bodyElement.appendChild(formElement);
           formElement.method = type;
-          formElement.action = "http://localhost:3010" + target;
+          formElement.action = "https://example.com:3010" + target;
           formElement.submit();
         }
         e.preventDefault();
