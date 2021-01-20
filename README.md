@@ -1,13 +1,13 @@
 # example CSRF
 
-プリフライトリクエストによる CSRF 対策の動作サンプル
+プリフライトリクエストによる CSRF 対策の動作サンプル for HTTPSサーバ
 
 ## インストール方法
 
 1. Git リポジトリをクローン
 
 ```sh
-git clone https://github.com/okamoai/example-csrf.git
+git clone https://github.com/verifsec/example-csrf.git
 ```
 
 2. プロジェクトディレクトリに移動
@@ -23,6 +23,9 @@ npm install
 ```
 
 ## サンプルの確認の仕方
+0. ルート証明書とサーバ証明書を生成（リポジトリ内のものはあくまでも例）
+- ルート証明書はブラウザ側にインポート
+- サーバ証明書はNode.js側で使用
 
 1. 動作確認用のローカルサーバを起動
 
@@ -32,9 +35,9 @@ npm start
 
 2. 以下へアクセス
 
-- http://localhost:3010/ (API サーバ)
-- http://localhost:3011/ (正規サーバ)
-- http://localhost:3012/ (外部サーバ)
+- https://localhost:3010/ (API サーバ)
+- https://localhost:3011/ (正規サーバ)
+- https://localhost:3012/ (外部サーバ)
 
 3. API サーバの `Session: Log in` ボタンを押してセッションを作成します。（これをしないと API は 401 を返します）
 
@@ -58,6 +61,14 @@ npm start
 *1 ブラウザに CORS エラーが表示されますが、リクエスト自体は処理されています  
 *2 CORS エラーによりプリフライトリクエストで処理が止まります。カスタムヘッダを送信しないことでプリフライトリクエストを抑制できますが、カスタムヘッダの検証によって 400 が返却され、いずれにしても処理が止まります。
 
+## Chromium Browser
++ ルート証明書をインストールする
++ BurpSuite等のプロキシを挟む場合
+
+```sh
+chromium --proxy-server="localhost:8080" --proxy-bypass-list="<--loopback>"
+```
+
 ## License
 
-MIT © [okamoai](https://github.com/okamoai)
+MIT © [okamoai](https://github.com/okamoai)　（改良 by verifsec）
