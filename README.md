@@ -22,10 +22,27 @@ cd example-csrf
 npm install
 ```
 
+## ルート証明書とサーバ証明書を生成
+- ブラウザ側にインポートするルート証明書を生成
+
+```sh
+openssl
+```
+
+
+- Node.js側で使用するサーバ証明書を生成（CN=example.com）
+
+```sh
+openssl
+```
+
+
 ## サンプルの確認の仕方
-0. ルート証明書とサーバ証明書を生成（リポジトリ内のものはあくまでも例）
-- ルート証明書はブラウザ側にインポート
-- サーバ証明書はNode.js側で使用
+0. example.comの名前解決をlocalhostにするため、`/etc/hosts`に追記
+
+```
+127.0.0.1   example.com
+```
 
 1. 動作確認用のローカルサーバを起動
 
@@ -35,9 +52,9 @@ npm start
 
 2. 以下へアクセス
 
-- https://localhost:3010/ (API サーバ)
-- https://localhost:3011/ (正規サーバ)
-- https://localhost:3012/ (外部サーバ)
+- https://example.com:3010/ (API サーバ)
+- https://example.com:3011/ (正規サーバ)
+- https://example.com:3012/ (外部サーバ)
 
 3. API サーバの `Session: Log in` ボタンを押してセッションを作成します。（これをしないと API は 401 を返します）
 
