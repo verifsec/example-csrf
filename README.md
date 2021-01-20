@@ -88,4 +88,4 @@ chromium --proxy-server="localhost:8080" --proxy-bypass-list="<--loopback>"
 
 ## License
 
-MIT © [okamoai](https://github.com/okamoai)　（改良 by verifsec）
+MIT © [okamoai](https://github.com/okamoai)　（revised by verifsec）
